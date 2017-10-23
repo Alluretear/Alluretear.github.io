@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>山不在高，有仙则灵</title>
+  <title>晴天·Sunny</title>
   
-  <subtitle>站点开发中，请等待。。。</subtitle>
+  
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
@@ -10,7 +10,7 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>周洋</name>
+    <name>Default</name>
     
   </author>
   
