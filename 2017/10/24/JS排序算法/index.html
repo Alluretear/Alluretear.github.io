@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="学习,JS,算法," />
+  <meta name="keywords" content="JS,学习,算法," />
 
 
 
@@ -89,7 +89,7 @@
 
 
 <meta name="description" content="我们平时对计算机中存储的数据执行的两种最常见的操作就是排序和查找，对于计算机的排序和查找的研究，自计算机诞生以来就没有停止过。如今又是大数据，云计算的时代，对数据的排序和查找的速度、效率要求更高，因此要对排序和查找的算法进行专门的数据结构设计，以便让我们对数据的操作更加简洁高效。">
-<meta name="keywords" content="学习,JS,算法">
+<meta name="keywords" content="JS,学习,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS排序算法">
 <meta property="og:url" content="http://yoursite.com/2017/10/24/JS排序算法/index.html">
@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://oyb6f71eo.bkt.clouddn.com/20160916160748389">
 <meta property="og:image" content="http://oyb6f71eo.bkt.clouddn.com/selectionSort">
 <meta property="og:image" content="http://oyb6f71eo.bkt.clouddn.com/insertionSort">
-<meta property="og:updated_time" content="2017-10-24T06:20:01.332Z">
+<meta property="og:updated_time" content="2017-10-24T06:58:03.479Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS排序算法">
 <meta name="twitter:description" content="我们平时对计算机中存储的数据执行的两种最常见的操作就是排序和查找，对于计算机的排序和查找的研究，自计算机诞生以来就没有停止过。如今又是大数据，云计算的时代，对数据的排序和查找的速度、效率要求更高，因此要对排序和查找的算法进行专门的数据结构设计，以便让我们对数据的操作更加简洁高效。">
@@ -363,6 +363,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,344 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -392,7 +423,7 @@
 <p><strong>时间复杂度：</strong>一个算法执行所耗费的时间</p>
 <p><strong>空间复杂度：</strong>运行完一个程序所需内存的大小</p>
 <h2 id="基本排序算法"><a href="#基本排序算法" class="headerlink" title="基本排序算法"></a>基本排序算法</h2><p>基本排序算法的核心思想就是对一组数据按照一定的顺序重新排序，其中重排时一般都会用到一组嵌套的 for 循环，外循环会遍历数组的每一项元素，内循环则用于进行元素直接的比较。</p>
-<h3 id="1-冒泡排序（BuddleSort）"><a href="#1-冒泡排序（BuddleSort）" class="headerlink" title="1.冒泡排序（BuddleSort）"></a>1.冒泡排序（BuddleSort）</h3><p>冒泡排序是比较经典的算法之一，也是排序最慢的算法之一，因为它的实现是非常的容易的。</p>
+<h3 id="冒泡排序（BuddleSort）"><a href="#冒泡排序（BuddleSort）" class="headerlink" title="冒泡排序（BuddleSort）"></a>冒泡排序（BuddleSort）</h3><p>冒泡排序是比较经典的算法之一，也是排序最慢的算法之一，因为它的实现是非常的容易的。</p>
 <p>冒泡排序的算法思想如下（升序排序）：</p>
 <p>1.比较相邻的元素。如果第一个比第二个大，就交换它们两个；</p>
 <p>2.对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对，这样最终最大数被交换到最后的位置；</p>
@@ -415,7 +446,7 @@ for ( var i = data.length ; i &gt; 0 ; i -- ){
     }
     return data;
 }
-</code></pre><h3 id="2-选择排序（SelectionSort）"><a href="#2-选择排序（SelectionSort）" class="headerlink" title="2.选择排序（SelectionSort）"></a>2.选择排序（SelectionSort）</h3><p>选择排序是一种比较简单直观的排序算法。它的算法思想是，从数组的开头开始遍历，将第一个元素和其他元素分别进行比较，记录最小的元素，等循环结束之后，将最小的元素放到数组的第一个位置上，然后从数组的第二个位置开始继续执行上述步骤。当进行到数组倒数第二个位置的时候，所有的数据就完成了排序。</p>
+</code></pre><h3 id="选择排序（SelectionSort）"><a href="#选择排序（SelectionSort）" class="headerlink" title="选择排序（SelectionSort）"></a>选择排序（SelectionSort）</h3><p>选择排序是一种比较简单直观的排序算法。它的算法思想是，从数组的开头开始遍历，将第一个元素和其他元素分别进行比较，记录最小的元素，等循环结束之后，将最小的元素放到数组的第一个位置上，然后从数组的第二个位置开始继续执行上述步骤。当进行到数组倒数第二个位置的时候，所有的数据就完成了排序。</p>
 <p>选择排序同样会用到嵌套循环，外循环从数组第一个位置移到倒数第二个位置；内循环从第二个位置移动到数组最后一个位置，查找比当前外循环所指向的元素还要小的元素，每次内循环结束后，都会将最小的值放到合适的位置上。</p>
 <p>同样，我借用网上一张动图，来展示选择排序的过程 ：</p>
 <p><img src="http://oyb6f71eo.bkt.clouddn.com/selectionSort" alt="selectionSort"></p>
@@ -439,7 +470,7 @@ function selectionSort( data ) {
     }
     return data;
 }
-</code></pre><h3 id="3-插入排序（insertionSort）"><a href="#3-插入排序（insertionSort）" class="headerlink" title="3.插入排序（insertionSort）"></a>3.插入排序（insertionSort）</h3><p>插入排序有点类似人类按字母顺序对数据进行排序，就如同你打扑克牌一样，将摸来的扑克按大小放到合适的位置一样。它的原理就是通过嵌套循环，外循环将数组元素挨个移动，而内循环则对外循环中选中的元素及它后面的元素进行比较；如果外循环中选中的元素比内循环中选中的元素小，那么数组元素会向右移动，为内循环中的这个元素腾出位置。</p>
+</code></pre><h3 id="插入排序（insertionSort）"><a href="#插入排序（insertionSort）" class="headerlink" title="插入排序（insertionSort）"></a>插入排序（insertionSort）</h3><p>插入排序有点类似人类按字母顺序对数据进行排序，就如同你打扑克牌一样，将摸来的扑克按大小放到合适的位置一样。它的原理就是通过嵌套循环，外循环将数组元素挨个移动，而内循环则对外循环中选中的元素及它后面的元素进行比较；如果外循环中选中的元素比内循环中选中的元素小，那么数组元素会向右移动，为内循环中的这个元素腾出位置。</p>
 <p>实现步骤如下：</p>
 <ol>
 <li>从第一个元素开始，该元素默认已经被排序</li>
@@ -467,7 +498,7 @@ function insertionSort( data ) {
  return data;
 }
 </code></pre><p>其中冒泡排序是最慢的，插入排序是最快的，我们可以在运行的过程中通过 console.time(‘sortName’) 和 console.timeEnd(‘sortName’) 两个输出来看他们的效率如何。</p>
-
+<h2 id="音乐"><a href="#音乐" class="headerlink" title="音乐"></a>音乐</h2><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28568244&auto=1&height=66"></iframe>
       
     </div>
     
@@ -513,9 +544,9 @@ function insertionSort( data ) {
       
         <div class="post-tags">
           
-            <a href="/tags/学习/" rel="tag"># 学习</a>
-          
             <a href="/tags/JS/" rel="tag"># JS</a>
+          
+            <a href="/tags/学习/" rel="tag"># 学习</a>
           
             <a href="/tags/算法/" rel="tag"># 算法</a>
           
@@ -709,7 +740,7 @@ function insertionSort( data ) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于排序算法的说明"><span class="nav-number">1.</span> <span class="nav-text">关于排序算法的说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本排序算法"><span class="nav-number">2.</span> <span class="nav-text">基本排序算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-冒泡排序（BuddleSort）"><span class="nav-number">2.1.</span> <span class="nav-text">1.冒泡排序（BuddleSort）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-选择排序（SelectionSort）"><span class="nav-number">2.2.</span> <span class="nav-text">2.选择排序（SelectionSort）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-插入排序（insertionSort）"><span class="nav-number">2.3.</span> <span class="nav-text">3.插入排序（insertionSort）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于排序算法的说明"><span class="nav-number">1.</span> <span class="nav-text">关于排序算法的说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本排序算法"><span class="nav-number">2.</span> <span class="nav-text">基本排序算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序（BuddleSort）"><span class="nav-number">2.1.</span> <span class="nav-text">冒泡排序（BuddleSort）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择排序（SelectionSort）"><span class="nav-number">2.2.</span> <span class="nav-text">选择排序（SelectionSort）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序（insertionSort）"><span class="nav-number">2.3.</span> <span class="nav-text">插入排序（insertionSort）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#音乐"><span class="nav-number">3.</span> <span class="nav-text">音乐</span></a></li></ol></div>
             
 
           </div>
