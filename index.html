@@ -1030,6 +1030,15 @@
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
+
+  document.addEventListener('visibilitychange', function() {
+    var isHidden = document.hidden;
+    if (isHidden) {
+     document.title = '页面崩溃啦，快回来';
+    } else {
+      document.title = '晴天·Sunny';
+    }
+  });
 </script>
 
 
