@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="JS,学习,算法," />
+  <meta name="keywords" content="学习,JS,算法," />
 
 
 
@@ -89,7 +89,7 @@
 
 
 <meta name="description" content="我们平时对计算机中存储的数据执行的两种最常见的操作就是排序和查找，对于计算机的排序和查找的研究，自计算机诞生以来就没有停止过。如今又是大数据，云计算的时代，对数据的排序和查找的速度、效率要求更高，因此要对排序和查找的算法进行专门的数据结构设计，以便让我们对数据的操作更加简洁高效。">
-<meta name="keywords" content="JS,学习,算法">
+<meta name="keywords" content="学习,JS,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS排序算法">
 <meta property="og:url" content="http://yoursite.com/2017/10/24/JS排序算法/index.html">
@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://oyb6f71eo.bkt.clouddn.com/20160916160748389">
 <meta property="og:image" content="http://oyb6f71eo.bkt.clouddn.com/selectionSort">
 <meta property="og:image" content="http://oyb6f71eo.bkt.clouddn.com/insertionSort">
-<meta property="og:updated_time" content="2017-10-24T06:58:03.479Z">
+<meta property="og:updated_time" content="2017-10-25T09:07:19.762Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS排序算法">
 <meta name="twitter:description" content="我们平时对计算机中存储的数据执行的两种最常见的操作就是排序和查找，对于计算机的排序和查找的研究，自计算机诞生以来就没有停止过。如今又是大数据，云计算的时代，对数据的排序和查找的速度、效率要求更高，因此要对排序和查找的算法进行专门的数据结构设计，以便让我们对数据的操作更加简洁高效。">
@@ -373,7 +373,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,344 字
+                  1,347 字
                 </span>
               
 
@@ -432,45 +432,14 @@
 <p>下面我借用网上一张动图，来展示冒泡排序的过程：</p>
 <p><img src="http://oyb6f71eo.bkt.clouddn.com/20160916160748389" alt="sort"></p>
 <p>具体的JS实现如下：</p>
-<pre><code>//冒泡排序
-function bubbleSort ( data ) {
-var temp = 0;
-for ( var i = data.length ; i &gt; 0 ; i -- ){
-    for( var j = 0 ; j &lt; i - 1 ; j++){
-       if( data[j] &gt; data[j + 1] ){
-           temp = data[j];
-           data[j] = data [j+1];
-           data[j+1] = temp;
-            }
-        }
-    }
-    return data;
-}
-</code></pre><h3 id="选择排序（SelectionSort）"><a href="#选择排序（SelectionSort）" class="headerlink" title="选择排序（SelectionSort）"></a>选择排序（SelectionSort）</h3><p>选择排序是一种比较简单直观的排序算法。它的算法思想是，从数组的开头开始遍历，将第一个元素和其他元素分别进行比较，记录最小的元素，等循环结束之后，将最小的元素放到数组的第一个位置上，然后从数组的第二个位置开始继续执行上述步骤。当进行到数组倒数第二个位置的时候，所有的数据就完成了排序。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//冒泡排序</span></div><div class="line">function bubbleSort ( <span class="keyword">data</span> ) &#123;</div><div class="line"><span class="keyword">var</span> temp = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> ( <span class="keyword">var</span> i = <span class="keyword">data</span>.length ; i &gt; <span class="number">0</span> ; i -- )&#123;</div><div class="line">    <span class="keyword">for</span>( <span class="keyword">var</span> j = <span class="number">0</span> ; j &lt; i - <span class="number">1</span> ; j++)&#123;</div><div class="line">       <span class="keyword">if</span>( <span class="keyword">data</span>[j] &gt; <span class="keyword">data</span>[j + <span class="number">1</span>] )&#123;</div><div class="line">           temp = <span class="keyword">data</span>[j];</div><div class="line">           <span class="keyword">data</span>[j] = <span class="keyword">data</span> [j+<span class="number">1</span>];</div><div class="line">           <span class="keyword">data</span>[j+<span class="number">1</span>] = temp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">data</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="选择排序（SelectionSort）"><a href="#选择排序（SelectionSort）" class="headerlink" title="选择排序（SelectionSort）"></a>选择排序（SelectionSort）</h3><p>选择排序是一种比较简单直观的排序算法。它的算法思想是，从数组的开头开始遍历，将第一个元素和其他元素分别进行比较，记录最小的元素，等循环结束之后，将最小的元素放到数组的第一个位置上，然后从数组的第二个位置开始继续执行上述步骤。当进行到数组倒数第二个位置的时候，所有的数据就完成了排序。</p>
 <p>选择排序同样会用到嵌套循环，外循环从数组第一个位置移到倒数第二个位置；内循环从第二个位置移动到数组最后一个位置，查找比当前外循环所指向的元素还要小的元素，每次内循环结束后，都会将最小的值放到合适的位置上。</p>
 <p>同样，我借用网上一张动图，来展示选择排序的过程 ：</p>
 <p><img src="http://oyb6f71eo.bkt.clouddn.com/selectionSort" alt="selectionSort"></p>
 <p>具体的JS实现如下：</p>
-<pre><code>//选择排序
-function selectionSort( data ) {
-    for( var i = 0; i&lt; data.length ; i++){
-        var min = data[i];
-        var temp;
-        var index = i;
-        for( var j = i + 1; j&lt; data.length; j++){
-            if( data[j] &lt; min ){
-                min = data[j];
-                index = j;
-            }
-        }
-
-        temp = data[i];
-        data[i] = min;
-        data[index]= temp;
-    }
-    return data;
-}
-</code></pre><h3 id="插入排序（insertionSort）"><a href="#插入排序（insertionSort）" class="headerlink" title="插入排序（insertionSort）"></a>插入排序（insertionSort）</h3><p>插入排序有点类似人类按字母顺序对数据进行排序，就如同你打扑克牌一样，将摸来的扑克按大小放到合适的位置一样。它的原理就是通过嵌套循环，外循环将数组元素挨个移动，而内循环则对外循环中选中的元素及它后面的元素进行比较；如果外循环中选中的元素比内循环中选中的元素小，那么数组元素会向右移动，为内循环中的这个元素腾出位置。</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//选择排序</div><div class="line"><span class="function"><span class="keyword">function</span></span> selectionSort( <span class="keyword">data</span> ) &#123;</div><div class="line">    for( var i = <span class="number">0</span>; i&lt; <span class="keyword">data</span>.length ; i++)&#123;</div><div class="line">        var <span class="built_in">min</span> = <span class="keyword">data</span>[i];</div><div class="line">        var temp;</div><div class="line">        var <span class="built_in">index</span> = i;</div><div class="line">        for( var j = i + <span class="number">1</span>; j&lt; <span class="keyword">data</span>.length; j++)&#123;</div><div class="line">            <span class="keyword">if</span>( <span class="keyword">data</span>[j] &lt; <span class="built_in">min</span> )&#123;</div><div class="line">                <span class="built_in">min</span> = <span class="keyword">data</span>[j];</div><div class="line">                <span class="built_in">index</span> = j;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        temp = <span class="keyword">data</span>[i];</div><div class="line">        <span class="keyword">data</span>[i] = <span class="built_in">min</span>;</div><div class="line">        <span class="keyword">data</span>[<span class="built_in">index</span>]= temp;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">data</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="插入排序（insertionSort）"><a href="#插入排序（insertionSort）" class="headerlink" title="插入排序（insertionSort）"></a>插入排序（insertionSort）</h3><p>插入排序有点类似人类按字母顺序对数据进行排序，就如同你打扑克牌一样，将摸来的扑克按大小放到合适的位置一样。它的原理就是通过嵌套循环，外循环将数组元素挨个移动，而内循环则对外循环中选中的元素及它后面的元素进行比较；如果外循环中选中的元素比内循环中选中的元素小，那么数组元素会向右移动，为内循环中的这个元素腾出位置。</p>
 <p>实现步骤如下：</p>
 <ol>
 <li>从第一个元素开始，该元素默认已经被排序</li>
@@ -483,21 +452,8 @@ function selectionSort( data ) {
 <p>它的实现效果图如下：</p>
 <p><img src="http://oyb6f71eo.bkt.clouddn.com/insertionSort" alt="insertSort"></p>
 <p>具体的JS实现如下：</p>
-<pre><code>//插入排序
-function insertionSort( data ) {
-    var len = data.length;
-    for (var i = 1; i &lt; len; i++) {
-        var key = data[i];
-        var j = i - 1;
-        while ( j &gt;= 0 &amp;&amp; data[j] &gt; key) {
-            data[j + 1] = data[j];
-         j--;
-      }
-      data[j + 1] = key;
-     }
- return data;
-}
-</code></pre><p>其中冒泡排序是最慢的，插入排序是最快的，我们可以在运行的过程中通过 console.time(‘sortName’) 和 console.timeEnd(‘sortName’) 两个输出来看他们的效率如何。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//插入排序</span></div><div class="line">function insertionSort( <span class="keyword">data</span> ) &#123;</div><div class="line">    <span class="keyword">var</span> len = <span class="keyword">data</span>.length;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</div><div class="line">        <span class="keyword">var</span> key = <span class="keyword">data</span>[i];</div><div class="line">        <span class="keyword">var</span> j = i - <span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span> ( j &gt;= <span class="number">0</span> &amp;&amp; <span class="keyword">data</span>[j] &gt; key) &#123;</div><div class="line">            <span class="keyword">data</span>[j + <span class="number">1</span>] = <span class="keyword">data</span>[j];</div><div class="line">         j--;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">data</span>[j + <span class="number">1</span>] = key;</div><div class="line">     &#125;</div><div class="line"> <span class="keyword">return</span> <span class="keyword">data</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中冒泡排序是最慢的，插入排序是最快的，我们可以在运行的过程中通过 console.time(‘sortName’) 和 console.timeEnd(‘sortName’) 两个输出来看他们的效率如何。</p>
 <h2 id="音乐"><a href="#音乐" class="headerlink" title="音乐"></a>音乐</h2><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28568244&auto=1&height=66"></iframe>
       
     </div>
@@ -544,9 +500,9 @@ function insertionSort( data ) {
       
         <div class="post-tags">
           
-            <a href="/tags/JS/" rel="tag"># JS</a>
-          
             <a href="/tags/学习/" rel="tag"># 学习</a>
+          
+            <a href="/tags/JS/" rel="tag"># JS</a>
           
             <a href="/tags/算法/" rel="tag"># 算法</a>
           

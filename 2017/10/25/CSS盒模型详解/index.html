@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://oyb6f71eo.bkt.clouddn.com/box2-2.png">
 <meta property="og:image" content="http://oyb6f71eo.bkt.clouddn.com/box3.png">
 <meta property="og:image" content="http://oyb6f71eo.bkt.clouddn.com/box3-3.png">
-<meta property="og:updated_time" content="2017-10-25T06:39:07.389Z">
+<meta property="og:updated_time" content="2017-10-25T09:07:48.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS盒模型详解">
 <meta name="twitter:description" content="首先用最近开发产品 豆豆数学 Logo镇楼；其次吐槽一下后端速度太慢，等了两天半还没把代码布上集成环境，看来周末加班又跑不掉了。好无聊…无聊…聊……">
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  893 字
+                  897 字
                 </span>
               
 
@@ -452,55 +452,27 @@
 <p><img src="http://oyb6f71eo.bkt.clouddn.com/box-Size" alt="boxSize"></p>
 <p><strong>通过代码来对其进行理解，更直观，如下</strong></p>
 <p><strong><em>eg1</em></strong></p>
-<pre><code>.box{
-    width:200px;
-    height:200px;
-    background-color:pink;
-}
-</code></pre><p><img src="http://oyb6f71eo.bkt.clouddn.com/boxx.png" alt="box"></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">       <span class="attribute">width</span>:<span class="number">200px</span>;</div><div class="line">       <span class="attribute">height</span>:<span class="number">200px</span>;</div><div class="line">       <span class="attribute">background-color</span>:pink;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://oyb6f71eo.bkt.clouddn.com/boxx.png" alt="box"></p>
 <p>此时，盒子大小就是content的大小。</p>
 <hr>
 <p><strong><em>eg2</em></strong></p>
-<pre><code>.box{
-    width:200px;
-    height:200px;
-    background-color:pink;
-    padding:20px;
-}
-</code></pre><p><strong>效果图如下：</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">       <span class="attribute">width</span>:<span class="number">200px</span>;</div><div class="line">       <span class="attribute">height</span>:<span class="number">200px</span>;</div><div class="line">       <span class="attribute">background-color</span>:pink;</div><div class="line">       <span class="attribute">padding</span>:<span class="number">20px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>效果图如下：</strong></p>
 <p><img src="http://oyb6f71eo.bkt.clouddn.com/box.png" alt="box"></p>
 <p><img src="http://oyb6f71eo.bkt.clouddn.com/box-1.png" alt="box-1"></p>
 <p>此时，盒子的长宽变成了240x240，显然，padding是能够改变盒子的大小的，这时盒子大小就等于content+padding。</p>
 <hr>
 <p><strong><em>eg3</em></strong></p>
-<pre><code>.box{
-    width:200px;
-    height:200px;
-    background-color:pink;
-    padding:20px;
-    border:10px solid black;
-}
-</code></pre><p><strong>效果图如下：</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">       <span class="attribute">width</span>:<span class="number">200px</span>;</div><div class="line">       <span class="attribute">height</span>:<span class="number">200px</span>;</div><div class="line">       <span class="attribute">background-color</span>:pink;</div><div class="line">       <span class="attribute">padding</span>:<span class="number">20px</span>;</div><div class="line">       <span class="attribute">border</span>:<span class="number">10px</span> solid black;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>效果图如下：</strong></p>
 <p><img src="http://oyb6f71eo.bkt.clouddn.com/box2.png" alt="box2"></p>
 <p><img src="http://oyb6f71eo.bkt.clouddn.com/box2-2.png" alt="box2-2"></p>
 <p>此时，盒子的长宽变成了260x260，所以这时盒子大小就等于content+padding+border。</p>
 <hr>
 <p><strong><em>eg4</em></strong></p>
-<pre><code>.box{
-    width:200px;
-    height:200px;
-    background-color:pink;
-    padding:20px;
-    border:10px solid black;
-    margin-bottom:10px;
-}
-
-.box1{
-    width: 100px;
-    height: 100px;
-    background: green;
-}
-</code></pre><p><strong>效果图如下：</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">       <span class="attribute">width</span>:<span class="number">200px</span>;</div><div class="line">       <span class="attribute">height</span>:<span class="number">200px</span>;</div><div class="line">       <span class="attribute">background-color</span>:pink;</div><div class="line">       <span class="attribute">padding</span>:<span class="number">20px</span>;</div><div class="line">       <span class="attribute">border</span>:<span class="number">10px</span> solid black;</div><div class="line">       <span class="attribute">margin-bottom</span>:<span class="number">10px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.box1</span>&#123;</div><div class="line">       <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">       <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">       <span class="attribute">background</span>: green;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>效果图如下：</strong></p>
 <p><img src="http://oyb6f71eo.bkt.clouddn.com/box3.png" alt="box3"></p>
 <p>此时，盒子的长宽仍为260x260，即盒子的大小并未发生变化。</p>
 <p><img src="http://oyb6f71eo.bkt.clouddn.com/box3-3.png" alt="box3-3"></p>
