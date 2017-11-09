@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhouyang1994.cn/"/>
-  <updated>2017-11-08T09:06:42.639Z</updated>
+  <updated>2017-11-09T03:51:55.372Z</updated>
   <id>http://zhouyang1994.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DateFormater</title>
+    <link href="http://zhouyang1994.cn/2017/11/09/DateFormater/"/>
+    <id>http://zhouyang1994.cn/2017/11/09/DateFormater/</id>
+    <published>2017-11-09T03:40:46.000Z</published>
+    <updated>2017-11-09T03:51:55.372Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>分享一个项目中写的日期格式化函数</p></blockquote><a id="more"></a><figure class="highlight sqf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">function <span class="built_in">date</span>(tm, <span class="built_in">format</span>) &#123;</div><div class="line">  <span class="keyword">if</span> (tm === <span class="string">'—'</span>) return <span class="string">'—'</span></div><div class="line">  let <span class="built_in">Time</span> = tm ? new <span class="built_in">Date</span>(tm) : new <span class="built_in">Date</span>()</div><div class="line">  let o = &#123;</div><div class="line">    <span class="string">'M+'</span>: <span class="built_in">Time</span>.getMonth() + <span class="number">1</span>,</div><div class="line">    <span class="string">'d+'</span>: <span class="built_in">Time</span>.getDate(),</div><div class="line">    <span class="string">'H+'</span>: <span class="built_in">Time</span>.getHours(),</div><div class="line">    <span class="string">'m+'</span>: <span class="built_in">Time</span>.getMinutes(),</div><div class="line">    <span class="string">'s+'</span>: <span class="built_in">Time</span>.getSeconds(),</div><div class="line">    <span class="string">'q+'</span>: Math.<span class="built_in">floor</span>((<span class="built_in">Time</span>.getMonth() + <span class="number">3</span>) / <span class="number">3</span>),</div><div class="line">    <span class="string">'S'</span>: <span class="built_in">Time</span>.getMilliseconds()</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="built_in">format</span> = <span class="built_in">format</span> || <span class="string">'yyyy-MM-dd HH:mm'</span></div><div class="line"></div><div class="line">  <span class="keyword">if</span> (/(y+)/.test(<span class="built_in">format</span>)) <span class="built_in">format</span> = <span class="built_in">format</span>.replace(RegExp.$<span class="number">1</span>, (<span class="built_in">Time</span>.getFullYear() + <span class="string">''</span>).substr(<span class="number">4</span> - RegExp.$<span class="number">1</span>.length))</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (let k <span class="built_in">in</span> o) &#123;</div><div class="line">    <span class="keyword">if</span> (new RegExp(<span class="string">'('</span> + k + <span class="string">')'</span>).test(<span class="built_in">format</span>)) &#123;</div><div class="line">      <span class="built_in">format</span> = <span class="built_in">format</span>.replace(RegExp.$<span class="number">1</span>, RegExp.$<span class="number">1</span>.length === <span class="number">1</span> ? o[k] : (<span class="string">'00'</span> + o[k]).substr((<span class="string">''</span> + o[k]).length))</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return <span class="built_in">format</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;分享一个项目中写的日期格式化函数&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="代码" scheme="http://zhouyang1994.cn/categories/%E4%BB%A3%E7%A0%81/"/>
+    
+    
+      <category term="JS" scheme="http://zhouyang1994.cn/tags/JS/"/>
+    
+      <category term="日期格式化" scheme="http://zhouyang1994.cn/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>Dream It Possible</title>
@@ -83,9 +109,9 @@
       <category term="学习" scheme="http://zhouyang1994.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="学习" scheme="http://zhouyang1994.cn/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="JS" scheme="http://zhouyang1994.cn/tags/JS/"/>
+    
+      <category term="学习" scheme="http://zhouyang1994.cn/tags/%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="算法" scheme="http://zhouyang1994.cn/tags/%E7%AE%97%E6%B3%95/"/>
     
@@ -112,9 +138,9 @@
       <category term="学习" scheme="http://zhouyang1994.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="Markdown" scheme="http://zhouyang1994.cn/tags/Markdown/"/>
-    
       <category term="学习" scheme="http://zhouyang1994.cn/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Markdown" scheme="http://zhouyang1994.cn/tags/Markdown/"/>
     
   </entry>
   
