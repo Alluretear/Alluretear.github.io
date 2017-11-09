@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>晴天·Sunny</title>
+  <title>Default&#39;s Blog</title>
   
   <subtitle>Try Hard And Do Your Best</subtitle>
   <link href="/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>http://zhouyang1994.cn/</id>
   
   <author>
-    <name>zhouyang</name>
+    <name>CDU_ZY</name>
     
   </author>
   
