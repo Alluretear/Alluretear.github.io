@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhouyang1994.cn/"/>
-  <updated>2017-11-09T03:51:55.372Z</updated>
+  <updated>2017-11-17T06:07:14.606Z</updated>
   <id>http://zhouyang1994.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>package.json文件中外部依赖组件的各种版本号形式及含义</title>
+    <link href="http://zhouyang1994.cn/2017/11/17/%20package.json%E4%B8%AD%E7%9A%84%E7%89%88%E6%9C%AC%E5%8F%B7%E5%BD%A2%E5%BC%8F/"/>
+    <id>http://zhouyang1994.cn/2017/11/17/ package.json中的版本号形式/</id>
+    <published>2017-11-17T02:23:21.000Z</published>
+    <updated>2017-11-17T06:07:14.606Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>最近开发公司运营系统时执行npm install发现把所有的依赖包都更新了，导致项目不停在报警告（原谅我是一枚小白不知道为什么会update ^_^）。仔细研究一番后发现原来依赖包的版本号形式大有文章。</p></blockquote><a id="more"></a><p>package.json中的dependencies定义了项目依赖的外部组件，这些外部组件的依赖都是带有版本符号以表示被依赖组件的版本范围。查看 package.json 文件时，往往会在 dependencies 下看到各种各样的版本号形式，示例如下：</p><figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="string">"dependencies"</span>: &#123;</div><div class="line">  <span class="string">"vue"</span>: <span class="string">"^2.4.2"</span>,</div><div class="line">  <span class="string">"vue-loader"</span>: <span class="string">"1.0.0 - 2.9999.9999"</span>,</div><div class="line">  <span class="string">"vue-router"</span>: <span class="string">"&gt;=1.0.2 &lt;2.1.2"</span>,</div><div class="line">  <span class="string">"vue-style-loader"</span>: <span class="string">"&gt;1.0.2 &lt;=2.3.4"</span>,</div><div class="line">  <span class="string">"vue-template-compiler"</span>: <span class="string">"2.0.1"</span>,</div><div class="line">  <span class="string">"vuex"</span>: <span class="string">"&lt;1.0.0 || &gt;=2.3.1 &lt;2.4.5 || &gt;=2.5.2 &lt;3.0.0"</span>,</div><div class="line">  <span class="string">"webpack"</span>: <span class="string">"http://webpack.com/webpack.tar.gz"</span>,</div><div class="line">  <span class="string">"webpack-bundle-analyzer"</span>: <span class="string">"~1.2"</span>,</div><div class="line">  <span class="string">"webpack-dev-middleware"</span>: <span class="string">"2.x"</span>,</div><div class="line">  <span class="string">"webpack-hot-middleware"</span>: <span class="string">"latest"</span>,</div><div class="line">  <span class="string">"netease"</span>: <span class="string">"file:deps\\netease"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure><p>项目中往往会依赖很多的外部组件，而这些组件都是开源，使用开源的组件时首先要注意的就是它的版本，版本号的差异会造成功能上的很大偏差，搞明白npm中版本符号的含义就是使用组件的基础，npm中的版本符号就是限定版本范围的符号。</p><p>版本号形式是有据可循的，它就是<a href="《语义化版本 2.0.0》" title="http://semver.org/lang/zh-CN/">《语义化版本 2.0.0》</a>， npm 遵循该规范，但做了以下扩展：</p><blockquote><p>版本号的构建号部分允许使用 - 字符，所以 0.2.0-1 在<a href="《语义化版本 2.0.0》" title="http://semver.org/lang/zh-CN/">《语义化版本 2.0.0》</a>中是非法的，却是合法的 npm 语义版本（Semantic Versioning）。</p></blockquote><p>npm 使用 <a href="semver" title="https://github.com/npm/node-semver">semver</a> 包进行版本号解析。</p><h2 id="版本号解析示例"><a href="#版本号解析示例" class="headerlink" title="版本号解析示例"></a>版本号解析示例</h2><h3 id="版本的格式"><a href="#版本的格式" class="headerlink" title="版本的格式"></a>版本的格式</h3><p>major.minor.patch</p><p>主版本号.次版本号.修补版本号</p><h3 id="version"><a href="#version" class="headerlink" title="version"></a>version</h3><p>必须匹配某个版本</p><pre><code>如：&quot;vue-template-compiler&quot;: &quot;2.0.1&quot;，表示必须依赖2.0.1版</code></pre><h3 id="gt-version"><a href="#gt-version" class="headerlink" title="&gt;version"></a>&gt;version</h3><p>必须大于某个版本</p><pre><code>如：&quot;vue-router&quot;: &quot;&gt;1.0.2&quot;，表示必须大于1.0.2版</code></pre><h3 id="gt-version-1"><a href="#gt-version-1" class="headerlink" title="&gt;=version"></a>&gt;=version</h3><p>可大于或等于某个版本</p><pre><code>如：&quot;vue-router&quot;: &quot;&gt;=1.0.2&quot;，表示可以等于1.0.2 ，也可以大于1.0.2版本</code></pre><h3 id="version-1"><a href="#version-1" class="headerlink" title="version"></a><img src="http://oyb6f71eo.bkt.clouddn.com/less_icon.png" alt="小于">version</h3><p>必须小于某个版本 </p><pre><code>如：&quot;vue-router&quot;: &quot;&lt;2.1.2&quot;，表示必须小于2.1.2版本    </code></pre><h3 id="version-2"><a href="#version-2" class="headerlink" title="=version"></a><img src="http://oyb6f71eo.bkt.clouddn.com/less_icon.png" alt="小于">=version</h3><p>可以小于或等于某个版本</p><pre><code>如：&quot;vue-router&quot;: &quot;&lt;=2.1.2&quot;，表示可以等于2.1.2，也可以小于2.1.2版本</code></pre><h3 id="version-3"><a href="#version-3" class="headerlink" title="~version"></a>~version</h3><p>大概匹配某个版本</p><p>如果minor版本号指定了，那么minor版本号不变，而patch版本号任意</p><p>如果minor和patch版本号未指定，那么minor和patch版本号任意</p><pre><code>如：~1.1.2，表示&gt;=1.1.2 &lt;1.2.0，可以是1.1.2，1.1.3，1.1.4，.....，1.1.n 如：~1.1，表示&gt;=1.1.0 &lt;1.2.0，可以是同上如：~1，表示&gt;=1.0.0 &lt;2.0.0，可以是1.0.0，1.0.1，1.0.2，.....，1.0.n，1.1.n，1.2.n，.....，1.n.n</code></pre><h3 id="version-4"><a href="#version-4" class="headerlink" title="^version"></a>^version</h3><p>兼容某个版本</p><p>版本号中最左边的非0数字的右侧可以任意</p><p>如果缺少某个版本号，则这个版本号的位置可以任意</p><pre><code>如：^1.1.2 ，表示&gt;=1.1.2 &lt;2.0.0，可以是1.1.2，1.1.3，.....，1.1.n，1.2.n，.....，1.n.n如：^0.2.3 ，表示&gt;=0.2.3 &lt;0.3.0，可以是0.2.3，0.2.4，.....，0.2.n如：^0.0，表示 &gt;=0.0.0 &lt;0.1.0，可以是0.0.0，0.0.1，.....，0.0.n</code></pre><h3 id="x-range"><a href="#x-range" class="headerlink" title="x-range"></a>x-range</h3><p>x的位置表示任意版本</p><pre><code>如：&quot;webpack-dev-middleware&quot;: &quot;1.2.x&quot;，表示可以1.2.0，1.2.1，.....，1.2.n</code></pre><h3 id="range"><a href="#range" class="headerlink" title="*-range"></a>*-range</h3><p>任意版本，””也表示任意版本</p><pre><code>如：*，表示&gt;=0.0.0的任意版本</code></pre><h3 id="version1-version2"><a href="#version1-version2" class="headerlink" title="version1 - version2"></a>version1 - version2</h3><p>大于等于version1，小于等于version2</p><pre><code>如：1.1.2 - 1.3.1，表示包括1.1.2和1.3.1以及他们件的任意版本</code></pre><h3 id="range1-range2"><a href="#range1-range2" class="headerlink" title="range1 || range2"></a>range1 || range2</h3><p>满足range1或者满足range2，可以多个范围</p><pre><code>如：&quot;vuex&quot;: &quot;&lt;1.0.0 || &gt;=2.3.1 &lt;2.4.5 || &gt;=2.5.2 &lt;3.0.0&quot;，表示满足这3个范围的版本都可以</code></pre><h3 id="latest"><a href="#latest" class="headerlink" title="latest"></a>latest</h3><p>当前发布版本</p><p>这是一个标记（tag，详见 <a href="dist-tag | npm Documentation" title="https://docs.npmjs.com/cli/dist-tag">dist-tag | npm Documentation</a>），默认情况下 npm install 安装的就是这个 latest 标记。 常见的标记还有 next stable beta canary 。</p><p>参考：</p><ul><li><a href="https://docs.npmjs.com/files/package.json" title="https://docs.npmjs.com/files/package.json" target="_blank" rel="external">https://docs.npmjs.com/files/package.json</a></li><li><a href="https://docs.npmjs.com/misc/semver" title="https://docs.npmjs.com/misc/semver" target="_blank" rel="external">https://docs.npmjs.com/misc/semver</a></li><li><a href="https://github.com/npm/node-semver" title="https://github.com/npm/node-semver" target="_blank" rel="external">https://github.com/npm/node-semver</a></li><li><a href="http://ju.outofmemory.cn/entry/130809" title="http://ju.outofmemory.cn/entry/130809" target="_blank" rel="external">http://ju.outofmemory.cn/entry/130809</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;最近开发公司运营系统时执行npm install发现把所有的依赖包都更新了，导致项目不停在报警告（原谅我是一枚小白不知道为什么会update ^_^）。仔细研究一番后发现原来依赖包的版本号形式大有文章。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="学习" scheme="http://zhouyang1994.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="package.json" scheme="http://zhouyang1994.cn/tags/package-json/"/>
+    
+      <category term="学习" scheme="http://zhouyang1994.cn/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="版本号" scheme="http://zhouyang1994.cn/tags/%E7%89%88%E6%9C%AC%E5%8F%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>DateFormater</title>
@@ -109,9 +137,9 @@
       <category term="学习" scheme="http://zhouyang1994.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="JS" scheme="http://zhouyang1994.cn/tags/JS/"/>
-    
       <category term="学习" scheme="http://zhouyang1994.cn/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="JS" scheme="http://zhouyang1994.cn/tags/JS/"/>
     
       <category term="算法" scheme="http://zhouyang1994.cn/tags/%E7%AE%97%E6%B3%95/"/>
     
