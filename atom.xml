@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhouyang1994.cn/"/>
-  <updated>2017-11-21T09:18:40.793Z</updated>
+  <updated>2017-11-21T09:23:12.599Z</updated>
   <id>http://zhouyang1994.cn/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>由一个“两次请求”引出的Web服务器跨域请求访问问题的解决方案</title>
+    <title>“两次请求”引出的Web服务器跨域请求访问问题的解决方案</title>
     <link href="http://zhouyang1994.cn/2017/11/21/web%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B7%A8%E5%9F%9F%E5%AF%BC%E8%87%B4%E4%B8%A4%E6%AC%A1%E8%AF%B7%E6%B1%82/"/>
     <id>http://zhouyang1994.cn/2017/11/21/web服务器跨域导致两次请求/</id>
     <published>2017-11-21T03:53:10.000Z</published>
-    <updated>2017-11-21T09:18:40.793Z</updated>
+    <updated>2017-11-21T09:23:12.599Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>Help…Help，最烦的就是处理跨域请求。最近开发中由于需要给手机Web布置作业添加点击流事件，但是接口在其他域名下面，不可避免的出现了跨域，So，麻烦运维同事在服务端Ngnix上配置了一大堆东西总算解决了，但是惊奇的事情出现了。</p></blockquote><a id="more"></a><p>为什么我发了两次一模一样的请求</p><p><img src="http://oyb6f71eo.bkt.clouddn.com/two_same_request.png" alt="two_same_request"></p><p>第一条请求的Method为OPTIONS，请求无正常数据返回</p><p><img src="http://oyb6f71eo.bkt.clouddn.com/first_request.png" alt="fir_req"><br><img src="http://oyb6f71eo.bkt.clouddn.com/first_res.png" alt="fir_res"></p><p>第二条请求的Method才是真正的GET或者POST，请求才会返回正常的数据。<br><img src="http://oyb6f71eo.bkt.clouddn.com/second_request.png" alt="sec_req"><br><img src="http://oyb6f71eo.bkt.clouddn.com/second_res.png" alt="sec_res"></p><p>代码出问题了？？？仔细检查，没问题啊，添加点击流之前都是正常的呢，为什么呢？百度一下，你就知道。</p><p>第一个OPTIONS的请求是由Web服务器处理跨域访问引发的。</p><p>OPTIONS是一种“预检请求”，浏览器在处理跨域访问的请求时如果判断请求为非简单请求，则会先向服务器发送一条预检请求，根据服务器返回的内容浏览器判断服务器是否允许该请求访问。</p><p>如果web服务器采用<a href="CORS" title="http://www.ruanyifeng.com/blog/2016/04/cors.html">CORS</a>的方式支持跨域访问，在处理复杂请求时这个预检请求是不可避免的。</p><p>而公司web服务器确实采用的是CORS来解决跨域访问的问题，导致我们的每次请求都为复杂请求，从而产生了每次请求都会发送两条请求的现象。</p><p>问题的原因找到了，就要想办法解决这个问题。既然浏览器在处理复杂请求时，不可避免的要发送预检请求，那么能否减少预检请求的次数呢？比如，预检一次设置一个有效期，在有效期内不再重复预检。顺着这个思路，继续搜索相关资料，最终发现设置Access-Control-Max-Age这个参数即可达到预期目标。该参数用来指定本次预检请求的有效期，单位为秒。在服务器上设置该参数之后，问题解决。</p><p>参考：</p><ul><li><a href="http://blog.csdn.net/cnhnnyzhy/article/details/53128179" target="_blank" rel="external">http://blog.csdn.net/cnhnnyzhy/article/details/53128179</a></li><li><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2016/04/cors.html</a></li></ul>]]></content>
     
