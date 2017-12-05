@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhouyang1994.cn/"/>
-  <updated>2017-11-24T08:12:35.097Z</updated>
+  <updated>2017-12-05T08:15:56.629Z</updated>
   <id>http://zhouyang1994.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>package-lock.json脱坑</title>
+    <link href="http://zhouyang1994.cn/2017/12/05/package-lock.json%E8%84%B1%E5%9D%91/"/>
+    <id>http://zhouyang1994.cn/2017/12/05/package-lock.json脱坑/</id>
+    <published>2017-12-05T07:54:18.000Z</published>
+    <updated>2017-12-05T08:15:56.629Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>npm v5.0 package-lock.json 脱坑</p></blockquote><a id="more"></a><p>升级到 Node.js v8.0 后，自带的 npm 也升级到了5.0，原本重新安装一次模块要十几秒到事情，现在一秒多就搞定了。</p><p>npm 5 的一些大的变化：</p><ul><li>使用<code>npm install xxx</code>命令安装模块时，不再需要<code>--save</code>选项，会自动将模块依赖信息保存到 package.json 文件；</li><li>安装模块操作（改变 node_modules 文件夹内容）会生成或更新 package-lock.json 文件；</li><li>发布的模块不会包含 package-lock.json 文件；</li><li>如果手动修改了 package.json 文件中已有模块的版本，直接执行<code>npm install</code>不会安装新指定的版本，只能通过<code>npm install xxx@yy</code>更新；</li></ul><p>重新安装模块之所以快，是因为 package-lock.json 文件中已经记录了整个 node_modules 文件夹的树状结构，甚至连模块的下载地址都记录了，再重新安装的时候只需要直接下载文件即可（这样看起来 facebook 的 yarn 好像没有啥优势了）。以下是 package-lock.json 文件的例子：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"doudou-operate"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="attr">"lockfileVersion"</span>: <span class="number">1</span>,</div><div class="line">  <span class="attr">"dependencies"</span>: &#123;</div><div class="line">    <span class="attr">"vue"</span>: &#123;</div><div class="line">      <span class="attr">"version"</span>: <span class="string">"2.5.9"</span>,</div><div class="line">      <span class="attr">"resolved"</span>: <span class="string">"http://registry.npm.taobao.org/vue/download/vue-2.5.9.tgz"</span>,</div><div class="line">      <span class="attr">"integrity"</span>: <span class="string">"sha1-sjgM0ECRXcppiB2v0SHXYJUuZfc="</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"vue-hot-reload-api"</span>: &#123;</div><div class="line">      <span class="attr">"version"</span>: <span class="string">"2.2.4"</span>,</div><div class="line">      <span class="attr">"resolved"</span>: <span class="string">"http://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.2.4.tgz"</span>,</div><div class="line">      <span class="attr">"integrity"</span>: <span class="string">"sha1-aDvR0CbA07PJN9WHVnnpqH7GzY8="</span>,</div><div class="line">      <span class="attr">"dev"</span>: <span class="literal">true</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"vue-loader"</span>: &#123;</div><div class="line">      <span class="attr">"version"</span>: <span class="string">"11.3.4"</span>,</div><div class="line">      <span class="attr">"resolved"</span>: <span class="string">"http://registry.npm.taobao.org/vue-loader/download/vue-loader-11.3.4.tgz"</span>,</div><div class="line">      <span class="attr">"integrity"</span>: <span class="string">"sha1-ZeEKRM4JLZBuFLvHKYHeyZ6wkNI="</span>,</div><div class="line">      <span class="attr">"dev"</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">"dependencies"</span>: &#123;</div><div class="line">        <span class="attr">"lru-cache"</span>: &#123;</div><div class="line">          <span class="attr">"version"</span>: <span class="string">"4.1.1"</span>,</div><div class="line">          <span class="attr">"resolved"</span>: <span class="string">"http://registry.npm.taobao.org/lru-cache/download/lru-cache-4.1.1.tgz"</span>,</div><div class="line">          <span class="attr">"integrity"</span>: <span class="string">"sha1-Yi4y6CSItJJ5EUpPns9F581rulU="</span>,</div><div class="line">          <span class="attr">"dev"</span>: <span class="literal">true</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure><p>带来速度的同时，npm 也挖了个大大的坑：</p><p><strong>以后直接改 package.json 文件相应模块的版本号，再执行<code>npm install</code>不会更新了（好可怕），你只能手动用<code>npm install xxx@yy</code>指定版本号来安装，然后它会自动更新 package-lock.json 文件。直接执行<code>npm install</code>时，如果不存在 package-lock.json 文件，它会根据安装模块后的 node_modules 目录结构来创建；如果已经存在 package-lock.json 文件，则它只会根据 package-lock.json 文件指定的结构来下载模块，并不会理会 package.json 文件。</strong></p><p>网上已经有很多人反应这个问题了：GitHub 上的 issue：<strong>package-lock.json file not updated after package.json file is changed</strong></p><p>链接：<a href="https://github.com/npm/npm/issues/16866" title="https://github.com/npm/npm/issues/16866" target="_blank" rel="external">https://github.com/npm/npm/issues/16866</a></p><p><strong>转载自：</strong><a href="https://www.topjishu.com/11681.html" title="https://www.topjishu.com/11681.html" target="_blank" rel="external">https://www.topjishu.com/11681.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;npm v5.0 package-lock.json 脱坑&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="学习" scheme="http://zhouyang1994.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="package-lock.json" scheme="http://zhouyang1994.cn/tags/package-lock-json/"/>
+    
+      <category term="node" scheme="http://zhouyang1994.cn/tags/node/"/>
+    
+      <category term="npm" scheme="http://zhouyang1994.cn/tags/npm/"/>
+    
+  </entry>
   
   <entry>
     <title>2017-11-24日常学习</title>
